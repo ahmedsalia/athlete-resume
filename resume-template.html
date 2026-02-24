@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basketball Athlete Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0F3B2C;
+      --secondary: #E5E4E2;
+      --white: #FFFFFF;
+      --dark: #1a1a1a;
+      --accent: #0F3B2C;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .resume-page {
+      width: 8.5in;
+      min-height: 11in;
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* === TOP HEADER BAR === */
+    .header-bar {
+      background: var(--primary);
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-bar .logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+    }
+
+    .header-bar .motto {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      color: var(--secondary);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    /* === MAIN LAYOUT === */
+    .main-content {
+      display: flex;
+      min-height: calc(11in - 74px - 40px);
+    }
+
+    /* === LEFT SIDEBAR === */
+    .sidebar {
+      width: 260px;
+      background: var(--primary);
+      color: var(--secondary);
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .photo-container {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .photo-container .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .sidebar-content {
+      padding: 20px 24px;
+    }
+
+    .sidebar .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      border-bottom: 2px solid rgba(229, 228, 226, 0.3);
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      margin-top: 20px;
+    }
+
+    .sidebar .section-title:first-child {
+      margin-top: 0;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 7px;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .info-label {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-value {
+      color: var(--secondary);
+      text-align: right;
+      font-weight: 600;
+    }
+
+    .social-item {
+      margin-bottom: 8px;
+      font-size: 10.5px;
+      word-break: break-all;
+    }
+
+    .social-item .social-label {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 10px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .social-item a,
+    .social-item span {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    /* === RIGHT CONTENT === */
+    .content {
+      flex: 1;
+      padding: 30px 35px;
+      background: var(--white);
+    }
+
+    .player-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 32px;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+
+    .player-position {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .player-team {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .content .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      margin-top: 22px;
+    }
+
+    /* === STATS GRID === */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+
+    .stat-box {
+      background: var(--primary);
+      border-radius: 6px;
+      padding: 12px 8px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 9px;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .stats-season {
+      font-size: 10px;
+      color: #999;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    /* Additional stats row */
+    .stats-extra {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .stat-box-sm {
+      background: var(--secondary);
+      border-radius: 6px;
+      padding: 10px 6px;
+      text-align: center;
+    }
+
+    .stat-box-sm .stat-value {
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    .stat-box-sm .stat-label {
+      color: var(--primary);
+      opacity: 0.7;
+    }
+
+    /* === EXPERIENCE === */
+    .experience-item {
+      margin-bottom: 12px;
+      padding-left: 14px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .exp-team {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--dark);
+    }
+
+    .exp-details {
+      font-size: 11px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* === HIGHLIGHTS === */
+    .highlights-link {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      padding: 8px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    /* === FOOTER === */
+    .footer-bar {
+      background: var(--primary);
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .footer-bar .logo-sm {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .footer-bar .motto-sm {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 9px;
+      color: var(--secondary);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+    }
+
+    /* === PRINT STYLES === */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .resume-page {
+        box-shadow: none;
+        width: 100%;
+        min-height: 100vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="resume-page">
+
+  <!-- ============ TOP HEADER ============ -->
+  <div class="header-bar">
+    <!-- REPLACE: team logo (use a local file path or URL) -->
+    <img src="logo.png" alt="Team Logo" class="logo"
+         onerror="this.style.display='none'">
+    <div class="motto">INTÉGRITÉ &nbsp;&bull;&nbsp; DISCIPLINE &nbsp;&bull;&nbsp; EXCELLENCE</div>
+    <img src="logo.png" alt="Team Logo" class="logo"
+         onerror="this.style.display='none'">
+  </div>
+
+  <div class="main-content">
+
+    <!-- ============ LEFT SIDEBAR ============ -->
+    <div class="sidebar">
+
+      <!-- REPLACE: athlete photo -->
+      <div class="photo-container">
+        <img src="player-photo.jpg" alt="Athlete Photo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder" style="display:none;">PLAYER<br>PHOTO</div>
+      </div>
+
+      <div class="sidebar-content">
+
+        <!-- PERSONAL INFO -->
+        <div class="section-title">Informations</div>
+
+        <div class="info-row">
+          <span class="info-label">Âge / Age</span>
+          <span class="info-value">17</span>                     <!-- REPLACE -->
+        </div>
+        <div class="info-row">
+          <span class="info-label">Taille / Height</span>
+          <span class="info-value">6'4" (193 cm)</span>          <!-- REPLACE -->
+        </div>
+        <div class="info-row">
+          <span class="info-label">Poids / Weight</span>
+          <span class="info-value">185 lbs (84 kg)</span>        <!-- REPLACE -->
+        </div>
+        <div class="info-row">
+          <span class="info-label">Nationalité</span>
+          <span class="info-value">Canadien</span>               <!-- REPLACE -->
+        </div>
+        <div class="info-row">
+          <span class="info-label">Citoyenneté CA</span>
+          <span class="info-value">Oui</span>                    <!-- REPLACE: Oui / Non / Résident permanent / etc. -->
+        </div>
+        <div class="info-row">
+          <span class="info-label">École / School</span>
+          <span class="info-value">École Secondaire</span>       <!-- REPLACE -->
+        </div>
+        <div class="info-row">
+          <span class="info-label">Position</span>
+          <span class="info-value">Shooting Guard</span>         <!-- REPLACE -->
+        </div>
+
+        <!-- SOCIAL MEDIA -->
+        <div class="section-title">Réseaux Sociaux</div>
+
+        <div class="social-item">
+          <span class="social-label">Instagram</span>
+          <span>@athlete_handle</span>                            <!-- REPLACE -->
+        </div>
+        <div class="social-item">
+          <span class="social-label">Twitter / X</span>
+          <span>@athlete_handle</span>                            <!-- REPLACE -->
+        </div>
+        <div class="social-item">
+          <span class="social-label">TikTok</span>
+          <span>@athlete_handle</span>                            <!-- REPLACE -->
+        </div>
+
+        <!-- CONTACT (optional) -->
+        <div class="section-title">Contact</div>
+        <div class="social-item">
+          <span class="social-label">Email</span>
+          <span>athlete@email.com</span>                          <!-- REPLACE -->
+        </div>
+        <div class="social-item">
+          <span class="social-label">Téléphone</span>
+          <span>(514) 000-0000</span>                             <!-- REPLACE -->
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ RIGHT CONTENT ============ -->
+    <div class="content">
+
+      <!-- PLAYER NAME & TEAM -->
+      <div class="player-name">PRÉNOM NOM</div>                  <!-- REPLACE -->
+      <div class="player-position">Shooting Guard &bull; #23</div><!-- REPLACE -->
+      <div class="player-team">Nom de l'Équipe</div>             <!-- REPLACE -->
+
+      <!-- BASKETBALL STATS -->
+      <div class="section-title">Statistiques / Stats</div>
+      <div class="stats-season">Saison 2025-2026</div>           <!-- REPLACE -->
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-value">18.5</div>                     <!-- REPLACE -->
+          <div class="stat-label">PPG</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">7.2</div>                      <!-- REPLACE -->
+          <div class="stat-label">RPG</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">4.1</div>                      <!-- REPLACE -->
+          <div class="stat-label">APG</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">48%</div>                      <!-- REPLACE -->
+          <div class="stat-label">FG%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value">1.8</div>                      <!-- REPLACE -->
+          <div class="stat-label">SPG</div>
+        </div>
+      </div>
+
+      <div class="stats-extra">
+        <div class="stat-box-sm">
+          <div class="stat-value">36%</div>                      <!-- REPLACE -->
+          <div class="stat-label">3PT%</div>
+        </div>
+        <div class="stat-box-sm">
+          <div class="stat-value">81%</div>                      <!-- REPLACE -->
+          <div class="stat-label">FT%</div>
+        </div>
+        <div class="stat-box-sm">
+          <div class="stat-value">0.8</div>                      <!-- REPLACE -->
+          <div class="stat-label">BPG</div>
+        </div>
+        <div class="stat-box-sm">
+          <div class="stat-value">2.1</div>                      <!-- REPLACE -->
+          <div class="stat-label">TO</div>
+        </div>
+        <div class="stat-box-sm">
+          <div class="stat-value">28.5</div>                     <!-- REPLACE -->
+          <div class="stat-label">MIN</div>
+        </div>
+      </div>
+
+      <!-- BASKETBALL EXPERIENCE -->
+      <div class="section-title">Expérience / Experience</div>
+
+      <div class="experience-item">                               <!-- DUPLICATE for each entry -->
+        <div class="exp-team">Nom de l'Équipe Actuelle</div>     <!-- REPLACE -->
+        <div class="exp-details">2024 – Présent &bull; Ligue / League Name</div><!-- REPLACE -->
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-team">Équipe Précédente</div>            <!-- REPLACE -->
+        <div class="exp-details">2022 – 2024 &bull; Ligue / League Name</div><!-- REPLACE -->
+      </div>
+
+      <div class="experience-item">
+        <div class="exp-team">Équipe Junior</div>                <!-- REPLACE -->
+        <div class="exp-details">2020 – 2022 &bull; Programme / Program Name</div><!-- REPLACE -->
+      </div>
+
+      <!-- HIGHLIGHTS -->
+      <div class="section-title">Highlights</div>
+      <a href="https://www.youtube.com/watch?v=XXXXXXXXX"
+         target="_blank" class="highlights-link">
+        Voir les Highlights / Watch Highlights
+      </a>                                                        <!-- REPLACE href -->
+
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <div class="footer-bar">
+    <img src="logo.png" alt="Logo" class="logo-sm"
+         onerror="this.style.display='none'">
+    <div class="motto-sm">INTÉGRITÉ &nbsp;&bull;&nbsp; DISCIPLINE &nbsp;&bull;&nbsp; EXCELLENCE</div>
+  </div>
+
+</div>
+
+</body>
+</html>
